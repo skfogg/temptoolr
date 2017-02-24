@@ -7,3 +7,5 @@ Depends: R (>= 3.2.3)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/skfogg/temptool
+BugReports: https://github.com/skfogg/temptool/issues

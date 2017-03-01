@@ -1,4 +1,3 @@
-
 setTiming <- function(odbcConnection, timeStep, yearsToRun, outputInterval){
 
   outputTickInterval <- outputInterval/timeStep # Default is to output once an hour

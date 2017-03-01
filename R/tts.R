@@ -1,4 +1,4 @@
-tts = function(connect, holonName, tableName, runID = "", xtsIndex = NULL) {
+tts = function(odbcConnection, holonName, tableName, runID = "", xtsIndex = NULL) {
 
   newTemperatureSeries <- structure(
       list(stateVal = "TEMP", holon = holonName, table = tableName, runID = runID),
@@ -6,7 +6,7 @@ tts = function(connect, holonName, tableName, runID = "", xtsIndex = NULL) {
     )
 
   sqlStmt <- paste0("SELECT modelTime, svValue FROM ", tableName, " WHERE holonname = '", holonName, "' AND stateVal = 'TEMP'")
-  queriedTemp <- sqlQuery(connect, sqlStmt)
+  queriedTemp <- sqlQuery(odbcConnection, sqlStmt)
 
   nReturned <- nrow(queriedTemp)
   if(nReturned == 0 ) stop("No records found for: ", paste0(names(newTemperatureSeries), "='", newTemperatureSeries, "'", collapse = ", "))
@@ -18,7 +18,9 @@ tts = function(connect, holonName, tableName, runID = "", xtsIndex = NULL) {
   tts <- structure(
     queriedTemp,
     class = c("tts", class(queriedTemp)),
-    spec = newTemperatureSeries
+    spec = newTemperatureSeries,
+    queryDate = date()
+    runID = runID
   )
 
   return(tts)

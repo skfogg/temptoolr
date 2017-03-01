@@ -19,7 +19,7 @@ tts = function(odbcConnection, holonName, tableName, runID = "", xtsIndex = NULL
     queriedTemp,
     class = c("tts", class(queriedTemp)),
     spec = newTemperatureSeries,
-    queryDate = date()
+    queryDate = date(),
     runID = runID
   )
 

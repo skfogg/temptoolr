@@ -11,6 +11,8 @@ tsz3d <- function(TSZnum,
                   phi = 30,
                   theta = 30,
                   zeroGrid = TRUE){
+  require(plot3D)
+
   channelT.2 <- as.vector(coredata(modelTemps[[1]]$svValue[dates]))
   for(i in 2:(TSZnum+1)){
     assign(paste0("hyp", i-1, "T.2"), as.vector(coredata(modelTemps[[i]]$svValue[dates])))

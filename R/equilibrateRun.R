@@ -71,7 +71,24 @@ equilibrateRun <- function(odbcConnection,
 
   repeat{
     # RUN MODEL
-    shell("cd D:/Users/sarah.fogg/Desktop/TempToolThatWorks && java -jar TempToolFour_March2015.jar", intern = internal)
+    # shell("cd D:/Users/sarah.fogg/Desktop/TempToolThatWorks && java -jar TempToolFour_March2015.jar", intern = internal)
+
+
+    assign("cTemp", tts(odbcConnection = connect, holonName = "channel_0001", tableName = "temp_signal_output", runID = runID))
+
+    for(z in firstBin:lastBin){
+      if(z < 10){
+        assign(paste0("tsz", z, "Temp"), tts(odbcConnection = odbcConnection,
+                                             holonName = paste0("hyporheic_000", z),
+                                             tableName = "temp_signal_output",
+                                             runID = runID))
+      } else {
+        assign(paste0("tsz", z, "Temp"), tts(odbcConnection = odbcConnection,
+                                             holonName = paste0("hyporheic_00", z),
+                                             tableName = "temp_signal_output",
+                                             runID = runID))
+      }
+    }
 
     # QUERY TEMPERATURE VALUES FROM OUTPUT
     assign("channelInitTemp", stateValSeries(odbcConnection, "TEMP", "channel_0001", "temp_signal_output", runID = runID))

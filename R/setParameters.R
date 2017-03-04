@@ -1,3 +1,16 @@
+#' Set the model parameters.
+#'
+#' @param firstBin numeric. The smallest TSZ in model run.
+#' @param lastBin numeric. The largest TSZ in model run.
+#' @param odbcConnection RODBC object.
+#' @param initTemps dataframe of starting temperatures. The default is initTemps = NULL, which starts all model cells at 1 degree C.
+#' @param surfaceShade numeric. Proportion of channel under shade.
+#' @param channelSurfaceArea numeric. (m2)
+#' @param channelVolume numeric. (m3)
+#' @param binStats dataframe from hyporheicBins(). Geometry of Hyporheic Zone.
+#' @return Does not return anything, check model database to see changes.
+
+
 setParameters <- function(firstBin, lastBin, odbcConnection, initTemps = NULL, surfaceShade, channelSurfaceArea, channelVolume, binStats){
 
   nbins <- (lastBin - firstBin) + 1

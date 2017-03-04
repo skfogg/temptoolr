@@ -9,3 +9,4 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/skfogg/temptool
 BugReports: https://github.com/skfogg/temptool/issues
+RoxygenNote: 6.0.1

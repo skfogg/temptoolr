@@ -1,3 +1,22 @@
+#' Find equilibrium temperatures on January 1
+#'
+#' @param odbcConnection RODBC object
+#' @param binStats data frame returned from hyporheicBins()
+#' @param channelVolume numeric
+#' @param channelSurfaceArea numeric
+#' @param surfaceShade numeric
+#' @param firstBin numeric
+#' @param lastBin numeric
+#' @param timeStep numeric
+#' @param runID character
+#' @param internal print java output in console? logical
+#' @param startWith values other that 1 deg C to start with
+#'
+#'
+#' @return data.frame of equilibrized temperatures
+
+
+
 equilibrateRun <- function(odbcConnection,
                            binStats,
                            channelVolume,

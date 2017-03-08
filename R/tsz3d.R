@@ -10,9 +10,9 @@
 #' @param numColors the number of colors in colors vector. numeric.
 #' @param colorGroupings the number of divisions in colors. numeric.
 #' @param zlim z-axis upper and lower bounds. numeric vector of length 2.
-#' @param phi
-#' @param theta
-#' @zeroGrid plot a  zero plane? TRUE/FALSE. default TRUE.
+#' @param phi phi
+#' @param theta theta
+#' @param zeroGrid plot a  zero plane? TRUE/FALSE. default TRUE.
 #'
 #' @return 3-D surface plot of change in channel temperature per hour contributed by each TSZ.
 

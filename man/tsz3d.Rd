@@ -28,6 +28,12 @@ tsz3d(TSZnum, dates, modelTemps, channelDepth, channelSurfaceArea, binStats,
 \item{colorGroupings}{the number of divisions in colors. numeric.}
 
 \item{zlim}{z-axis upper and lower bounds. numeric vector of length 2.}
+
+\item{phi}{phi}
+
+\item{theta}{theta}
+
+\item{zeroGrid}{plot a  zero plane? TRUE/FALSE. default TRUE.}
 }
 \value{
 3-D surface plot of change in channel temperature per hour contributed by each TSZ.

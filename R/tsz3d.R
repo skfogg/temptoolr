@@ -1,3 +1,22 @@
+#' Plot change in channel temperature per hour
+#'
+#' @param TSZnum the number of TSZs in model. numeric.
+#' @param dates the date or dates to plot. lubridate object.
+#' @param modelTemps list of model temperatures. tts object.
+#' @param channelDepth numeric.
+#' @param channelSurfaceArea numeric.
+#' @param binStats TSZ geometry. dataframe output from hyporheicBins()
+#' @param colors color ramp. numeric vector.
+#' @param numColors the number of colors in colors vector. numeric.
+#' @param colorGroupings the number of divisions in colors. numeric.
+#' @param zlim z-axis upper and lower bounds. numeric vector of length 2.
+#' @param phi
+#' @param theta
+#' @zeroGrid plot a  zero plane? TRUE/FALSE. default TRUE.
+#'
+#' @return 3-D surface plot of change in channel temperature per hour contributed by each TSZ.
+
+
 tsz3d <- function(TSZnum,
                   dates,
                   modelTemps,

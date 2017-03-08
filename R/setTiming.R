@@ -1,3 +1,13 @@
+#' Set model timing.
+#'
+#' @param odbcConnection RODBC object.
+#' @param timeStep model time step in seconds. numeric.
+#' @param yearsToRun how long to run model, in years. numeric.
+#' @param outputInterval model will output at this time, in seconds. numeric.
+#'
+#' @return Does not return anything, check model database to see changes.
+
+
 setTiming <- function(odbcConnection, timeStep, yearsToRun, outputInterval){
 
   outputTickInterval <- outputInterval/timeStep # Default is to output once an hour

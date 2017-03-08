@@ -3,6 +3,7 @@
 #' @param firstBin numeric, the smallest TSZ considered in model run
 #' @param lastBin numeric, the largest TSZ in model run
 #' @param odbcConnection RODBC object
+#'
 #' @return Does not return anything, check model database to see changes.
 
 setSkeleton <- function(firstBin, lastBin, odbcConnection){

@@ -32,6 +32,7 @@ equilibrateRun <- function(odbcConnection,
   require(lubridate)
   require(zoo)
   require(xts)
+  require(temptool)
 
   nbins <- (lastBin - firstBin) + 1
   aquiferVolume <- sum(binStats[firstBin:lastBin,]$volume)

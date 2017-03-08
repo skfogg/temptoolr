@@ -1,3 +1,21 @@
+#' run TempTool
+#'
+#' @param odbcConnection RODBC object
+#' @param binStats data frame returned from hyporheicBins()
+#' @param channelVolume numeric
+#' @param channelSurfaceArea numeric
+#' @param surfaceShade numeric
+#' @param firstBin numeric
+#' @param lastBin numeric
+#' @param timeStep numeric
+#' @param yearsToRun numeric (years)
+#' @param runID character
+#' @param outputIndex lubridate object
+#' @param internal print java output? logical
+#'
+#' @return list of tts objects from each model cell
+#' @export
+
 runTempTool <- function(odbcConnection,
                          binStats,
                          initTemps = NULL,

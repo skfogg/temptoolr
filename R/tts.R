@@ -1,4 +1,16 @@
-tts = function(odbcConnection, holonName, tableName, runID = "", xtsIndex = NULL) {
+#' Temperature Time Series
+#'
+#' @param odbcConnection RODBC object
+#' @param holonName the holon name of the cell to query
+#' @param tableName the table to query
+#' @param runID character
+#' @param xtsIndex lubridate object
+#'
+#' @return tts object
+#' @export
+
+
+tts <- function(odbcConnection, holonName, tableName, runID = "", xtsIndex = NULL) {
 
   newTemperatureSeries <- structure(
       list(stateVal = "TEMP", holon = holonName, table = tableName, runID = runID),

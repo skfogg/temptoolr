@@ -6,6 +6,7 @@
 #' @param outputInterval model will output at this time, in seconds. numeric.
 #'
 #' @return Does not return anything, check model database to see changes.
+#' @export
 
 
 setTiming <- function(odbcConnection, timeStep, yearsToRun, outputInterval){

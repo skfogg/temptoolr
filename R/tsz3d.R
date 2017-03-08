@@ -15,6 +15,7 @@
 #' @param zeroGrid plot a  zero plane? TRUE/FALSE. default TRUE.
 #'
 #' @return 3-D surface plot of change in channel temperature per hour contributed by each TSZ.
+#' @export
 
 
 tsz3d <- function(TSZnum,

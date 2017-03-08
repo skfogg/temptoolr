@@ -5,6 +5,7 @@
 #' @param odbcConnection RODBC object
 #'
 #' @return Does not return anything, check model database to see changes.
+#' @export
 
 setSkeleton <- function(firstBin, lastBin, odbcConnection){
 

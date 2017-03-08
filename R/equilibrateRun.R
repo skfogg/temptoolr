@@ -12,8 +12,8 @@
 #' @param internal print java output in console? logical
 #' @param startWith values other that 1 deg C to start with
 #'
-#'
 #' @return data.frame of equilibrized temperatures
+#' @export
 
 
 

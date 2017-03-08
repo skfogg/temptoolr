@@ -8,7 +8,9 @@
 #' @param channelSurfaceArea numeric. (m2)
 #' @param channelVolume numeric. (m3)
 #' @param binStats dataframe from hyporheicBins(). Geometry of Hyporheic Zone.
+#'
 #' @return Does not return anything, check model database to see changes.
+#' @export
 
 
 setParameters <- function(firstBin, lastBin, odbcConnection, initTemps = NULL, surfaceShade, channelSurfaceArea, channelVolume, binStats){

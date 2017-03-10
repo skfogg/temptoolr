@@ -40,7 +40,7 @@ tsz3d <- function(TSZnum,
 
   grossHypFlux <- numeric(TSZnum)
   for(i in 1:TSZnum){
-    grossHypFlux[i] <- binStats$returnFlow[i]/channelSurfaceArea
+    grossHypFlux[i] <- binStats$returning[i]/channelSurfaceArea
   }
 
 

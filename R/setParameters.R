@@ -16,7 +16,7 @@
 setParameters <- function(firstBin, lastBin, odbcConnection, initTemps = NULL, surfaceShade, channelSurfaceArea, channelVolume, binStats){
 
   nbins <- (lastBin - firstBin) + 1
-  aquiferVolume <- sum(binStats[firstBin:lastBin,]$volume)
+  aquiferVolume <- sum(binStats[firstBin:lastBin,]$aquiferStorage)
 
   if(is.null(initTemps)){
     # SET ALL TEMPERATURES TO 1 DEG C
@@ -57,34 +57,34 @@ setParameters <- function(firstBin, lastBin, odbcConnection, initTemps = NULL, s
   # UPDATE HYPORHEIC SUBZONE VOLUMES
   for (z in firstBin:lastBin){
     if (z < 10){
-      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_cell_hyporheic SET HypoVolume='", binStats$volume[z], "' WHERE ID = 'hyporheic_000", z, "';"))
+      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_cell_hyporheic SET HypoVolume='", binStats$aquiferStorage[z], "' WHERE ID = 'hyporheic_000", z, "';"))
     } else {
-      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_cell_hyporheic SET HypoVolume='", binStats$volume[z], "' WHERE ID = 'hyporheic_00", z, "';"))
+      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_cell_hyporheic SET HypoVolume='", binStats$aquiferStorage[z], "' WHERE ID = 'hyporheic_00", z, "';"))
     }
   }
 
   # UPDATE GROSS HYPORHEIC INFLOW
   if(firstBin < 10){
-    sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow SET InFlow ='", sum(binStats[firstBin:lastBin,]$returnFlow), "' WHERE ID = 'bedto_000", firstBin,"';"))
+    sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow SET InFlow ='", sum(binStats[firstBin:lastBin,]$returning), "' WHERE ID = 'bedto_000", firstBin,"';"))
   } else {
-    sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow SET InFlow ='", sum(binStats[firstBin:lastBin,]$returnFlow), "' WHERE ID = 'bedto_00", firstBin,"';"))
+    sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow SET InFlow ='", sum(binStats[firstBin:lastBin,]$returning), "' WHERE ID = 'bedto_00", firstBin,"';"))
   }
 
   # UPDATE INTERZONE INFLOWS
   for (z in (firstBin+1):lastBin){
     if (z < 10){
-      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_interzone SET InFlow ='", binStats$inFlow[z], "' WHERE ID = 'bedto_000", z, "';"))
+      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_interzone SET InFlow ='", binStats$entering[z], "' WHERE ID = 'bedto_000", z, "';"))
     } else {
-      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_interzone SET InFlow ='", binStats$inFlow[z], "' WHERE ID = 'bedto_00", z, "';"))
+      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_interzone SET InFlow ='", binStats$entering[z], "' WHERE ID = 'bedto_00", z, "';"))
     }
   }
 
   # UPDATE RETURN FLOWS
   for (z in firstBin:lastBin){
     if (z < 10){
-      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_discharge SET OutFlow = '", binStats$returnFlow[z], "' WHERE ID = 'bedfrom_000", z, "';"))
+      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_discharge SET OutFlow = '", binStats$returning[z], "' WHERE ID = 'bedfrom_000", z, "';"))
     } else {
-      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_discharge SET OutFlow = '", binStats$returnFlow[z], "' WHERE ID ='bedfrom_00", z, "';"))
+      sqlQuery(odbcConnection, paste0("UPDATE temptoolfour.init_heat_edge_gwflow_discharge SET OutFlow = '", binStats$returning[z], "' WHERE ID ='bedfrom_00", z, "';"))
     }
   }
 

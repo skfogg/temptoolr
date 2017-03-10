@@ -35,7 +35,7 @@ equilibrateRun <- function(odbcConnection,
   require(temptool)
 
   nbins <- (lastBin - firstBin) + 1
-  aquiferVolume <- sum(binStats[firstBin:lastBin,]$volume)
+  aquiferVolume <- sum(binStats[firstBin:lastBin,]$aquiferStorage)
 
   setSkeleton(firstBin, lastBin, odbcConnection)
   setParameters(firstBin, lastBin, odbcConnection, initTemps = NULL, surfaceShade, channelSurfaceArea, channelVolume, binStats)

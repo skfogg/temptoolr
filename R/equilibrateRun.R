@@ -15,8 +15,6 @@
 #' @return data.frame of equilibrized temperatures
 #' @export
 
-
-
 equilibrateRun <- function(odbcConnection,
                            binStats,
                            channelVolume,

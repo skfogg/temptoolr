@@ -10,14 +10,14 @@
 #' @export
 
 
-tts <- function(odbcConnection, holonName, tableName, runID = "", xtsIndex = NULL) {
+tts <- function(odbcConnection, holonName, tableName, runID = "", xtsIndex = NULL, select = "modelTime, svValue") {
 
   newTemperatureSeries <- structure(
       list(stateVal = "TEMP", holon = holonName, table = tableName, runID = runID),
       class = "TemperatureSeries"
     )
 
-  sqlStmt <- paste0("SELECT modelTime, svValue FROM ", tableName, " WHERE holonname = '", holonName, "' AND stateVal = 'TEMP'")
+  sqlStmt <- paste0("SELECT ", select, " FROM ", tableName, " WHERE holonname = '", holonName, "' AND stateVal = 'TEMP'")
   queriedTemp <- sqlQuery(odbcConnection, sqlStmt)
 
   nReturned <- nrow(queriedTemp)

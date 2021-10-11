@@ -25,7 +25,7 @@ equilibrateRun <- function(odbcConnection,
                            timeStep,
                            runID,
                            internal = FALSE,
-                           startWith){
+                           startWith = NULL){
   require(RODBC)
   require(lubridate)
   require(zoo)
@@ -36,7 +36,7 @@ equilibrateRun <- function(odbcConnection,
   aquiferVolume <- sum(binStats[firstBin:lastBin,]$aquiferStorage)
 
   setSkeleton(firstBin, lastBin, odbcConnection)
-  setParameters(firstBin, lastBin, odbcConnection, initTemps = NULL, surfaceShade, channelSurfaceArea, channelVolume, binStats)
+  setParameters(firstBin, lastBin, odbcConnection, initTemps = startWith, surfaceShade, channelSurfaceArea, channelVolume, binStats)
 
   setTiming(odbcConnection,
             timeStep,

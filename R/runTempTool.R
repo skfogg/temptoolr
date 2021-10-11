@@ -46,9 +46,10 @@ runTempTool <- function(odbcConnection,
 
 
   ### RUN MODEL ###
-  shell("cd D:\\Users\\sarah.fogg\\Desktop\\TempToolThatWorks && java -jar TempToolFour_March2015.jar", intern=TRUE)
+  #shell("cd D:\\Users\\sarah.fogg\\Desktop\\TempToolThatWorks && java -jar TempToolFour_March2015.jar", intern=TRUE)
+  shell("cd C:\\Users\\t24x137\\Desktop\\Old Tower Desktop Folders\\TempToolThatWorks && java -jar TempToolFour_March2015.jar", intern=TRUE)
 
-  connect <- odbcConnect("TempToolFourANSI", uid="root", pwd="password")
+  connect <- odbcConnect("TempToolFourANSI", uid="root", pwd="poolelab")
 
   assign("cTemp", tts(odbcConnection = connect, holonName = "channel_0001", tableName = "temp_signal_output", runID = runID, xtsIndex = outputIndex))
 
